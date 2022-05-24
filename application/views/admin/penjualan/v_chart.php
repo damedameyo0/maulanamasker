@@ -128,7 +128,7 @@
 										$x = 1;
 										foreach ($find_date->result_array() as $i) :
 											$kode_jual = $i['kode_jual'];
-											$user_name = $i['user_	name'];
+											$user_name = $i['user_name'];
 											$pelanggan_name = $i['pelanggan_name'];
 											$sale_date = $i['sale_date'];
 											$penjualan_id = $i['penjualan_id'];

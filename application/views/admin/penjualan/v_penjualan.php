@@ -69,7 +69,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID Masker</th>
+                                        <th>ID</th>
                                         <th>Nama Masker</th>
                                         <th>Harga Masker</th>
                                         <th>Jumlah</th>
@@ -78,8 +78,7 @@
                                     </tr>
                                 </thead>
                                 <!--Prototype-->
-                                <tbody id="detail_cart">
-                                </tbody>
+                                <tbody id="detail_cart"></tbody>
                                 <!--END Prototype-->
                             </table>
                         </div>

@@ -14,7 +14,7 @@
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid">
-            <h3>Customer</h3>
+            <h3>Pelanggan</h3>
             <?php $this->load->view("admin/_partials/breadcrumb.php"); ?>
             <div class="card mb-4">
               <div class="card-header"><i class="fas fa-table mr-1"></i>List Pelanggan

@@ -66,14 +66,14 @@
                                             <div style="width: 78px;">
                                                 <input type="number" name="price_pcs" id="price_pcs<?php echo $id; ?>" value="0" class="form-control" style="width: 75px;">
                                         </td>
-                                        <td>
-                                            <div style="width: 78px;">
-                                                <button class="add_cart btn btn-success btn-block" data-productid="<?= $id; ?>" data-productname="<?= $title; ?>" data-productprice="<?= $price; ?>" data-productdiscount="<?= $discount; ?>">
-                                                    <i class="fa fa-cart-plus"></i> Add
-                                                </button>
-                                            </div>
+                                        <div style="width: 78px;">
+                                            <button class="add_cart btn btn-success btn-block" data-productid="<?= $id; ?>" data-productname="<?= $title; ?>" data-productprice="<?= $price; ?>" data-productdiscount="<?= $discount; ?>">
+                                                <i class="fa fa-cart-plus"></i> Add
+                                            </button>
+                                        </div>
                                         </td>
                                     </tr> <?php endforeach; ?>
+                                </td>
                             </tbody>
                         </table>
                     </div>
@@ -82,6 +82,7 @@
         </form>
     </div>
 </div>
+
 <div class="modal fade" id="showSupplier" role="dialog">
     <div class="modal-dialog modal-lg">
         <form class="form-horizontal" action="" method="post">

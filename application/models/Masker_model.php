@@ -11,7 +11,7 @@ class Masker_model extends CI_Model
 
     public function masker_getById($id)
     {
-        $query = $this->db->query("SELECT * FROM masker where masker_id = $id");
+        $query = $this->db->query("SELECT * FROM masker where id_masker = $id");
         return $query;
     }
 
@@ -23,14 +23,14 @@ class Masker_model extends CI_Model
 
     public function masker_update($id, $table, $data)
     {
-        $query = $this->db->where('masker_id', $id);
+        $query = $this->db->where('id_masker', $id);
         $query = $this->db->update($table, $data);
         return $query;
     }
 
     public function masker_delete($table, $id)
     {
-        $query = $this->db->where('masker_id', $id);
+        $query = $this->db->where('id_masker', $id);
         $query = $this->db->delete($table);
         return $query;
     }

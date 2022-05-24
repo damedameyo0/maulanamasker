@@ -50,9 +50,12 @@
             </a>
             <div class="collapse" id="collapseDataMaster" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="<?php echo site_url('Pelanggan') ?>">Pengelolaan Data Pelanggan</a>
-                    <a class="nav-link" href="<?php echo site_url('Pelanggan') ?>">Pengelolaan Data User</a>
-                    <a class="nav-link" href="<?php echo site_url('Level') ?>">Pengelolaan Level</a>
+                    <a class="nav-link" href="<?php echo site_url('Masker') ?>">Pengelolaan Data Masker
+                    </a>
+                    <a class="nav-link" href="<?php echo site_url('Pelanggan') ?>">Pengelolaan Data Pelanggan
+                    </a>
+                    <a class="nav-link" href="<?php echo site_url('Level') ?>">Pengelolaan Level
+                    </a>
                 </nav>
             </div>
 </nav>

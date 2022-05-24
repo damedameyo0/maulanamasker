@@ -26,19 +26,21 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">id</th>
-                                            <th width="35%">Nama Masker</th>
-                                            <th width="35%">Harga Masker</th>
-                                            <th width="35%">Stok Masker</th>
+                                            <th width="25%">Nama Masker</th>
+                                            <th width="25%">Harga Masker</th>
+                                            <th width="25%">Stok Masker</th>
+                                            <th width="35%">Action</th>
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($Masker->result_array() as $i) :
+                                        foreach ($masker->result_array() as $i) :
                                             $id = $i['id_masker'];
-                                            $title = $i['nama_masker'];
-                                            $price = $i['harga_masker'];
-                                            $stock = $i['stok_masker'];
+                                            $title = $i['title'];
+                                            $price = $i['price'];
+                                            $stock = $i['stock'];
                                         ?>
                                             <tr>
                                                 <td><?php echo $id; ?></td>
@@ -46,7 +48,8 @@
                                                 <td><?php echo $price; ?></td>
                                                 <td><?php echo $stock; ?></td>
                                                 <td>
-                                                    <a type="button" data-bs-toggle="modal" data-bs-target="#editMasker<?php echo $id; ?>" class="btn btn-primary">Edit</a>
+                                                    <a type="button" data-bs-toggle="modal" data-bs-target="#editMasker<?php echo $id; ?>" class="btn btn-primary">Edit
+                                                    </a>
                                                     <a type="button" data-bs-toggle="modal" data-bs-target="#deleteMasker<?php echo $id; ?>" class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
@@ -63,10 +66,9 @@
         </div>
     </div>
 </body>
-<?php $this->load->view("admin/penjualan/modal_penjualan.php"); ?>
 <?php $this->load->view("admin/_partials/modal.php"); ?>
 <script src="<?php echo base_url('/js/datatables-simple-demo.js') ?>"></script>
-<?php $this->load->view("admin/book/modal_book.php") ?>
+<?php $this->load->view("admin/masker/modal_masker.php") ?>
 <?php $this->load->view("admin/_partials/js.php") ?>
 
 </html>

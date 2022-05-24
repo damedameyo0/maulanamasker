@@ -1,9 +1,9 @@
-<div class="modal fade" id="show_buku" role="dialog">
+<div class="modal fade" id="show_masker" role="dialog">
     <div class="modal-dialog modal-lg">
         <form class="form-horizontal" action="" method="post">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Pilih Buku</h5>
+                    <h5 class="modal-title">Pilih Masker</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -13,6 +13,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama Masker</th>
+                                    <th>Harga Masker</th>
                                     <th>Jumlah</th>
                                     <th>Action</th>
                                 </tr>
@@ -20,13 +21,14 @@
                             <tbody>
                                 <?php
                                 foreach ($masker->result_array() as $i) :
-                                    $id = $i['book_id'];
+                                    $id = $i['id_masker'];
                                     $title = $i['title'];
                                     $price = $i['price'];
                                 ?>
                                     <tr>
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $title; ?></td>
+                                        <td> <?php echo $price; ?></td>
                                         <td>
                                             <input type="number" name="quantity" id="<?php echo $id; ?>" value="1" class="form-control" style="width: 65px;">
                                         </td>
@@ -48,12 +50,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="showCustomer" role="dialog">
+<!-- <div class="modal fade" id="showCustomer" role="dialog">
     <div class="modal-dialog modal-lg">
         <form class="form-horizontal" action="" method="post">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Pilih Customer</h5>
+                    <h5 class="modal-title">Pilih Pelanggan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -94,4 +96,4 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->

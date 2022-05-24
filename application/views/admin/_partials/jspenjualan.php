@@ -32,16 +32,14 @@
             var product_id = $(this).data("productid");
             var product_name = $(this).data("productname");
             var product_price = $(this).data("productprice");
-            var product_discount = $(this).data("productdiscount");
             var quantity = $('#' + product_id).val();
             $.ajax({
-                url: "<?= base_url('admin/Penjualan/add_to_cart'); ?>",
+                url: "<?= base_url('Penjualan/add_to_cart'); ?>",
                 method: "POST",
                 data: {
                     product_id: product_id,
                     product_name: product_name,
                     product_price: product_price,
-                    product_discount: product_discount,
                     quantity: quantity
                 },
 
@@ -51,12 +49,12 @@
             });
         });
 
-        $('#detail_cart').load("<?= base_url('admin/Penjualan/load_cart'); ?>");
+        $('#detail_cart').load("<?= base_url('Penjualan/load_cart'); ?>");
 
         $(document).on('click', '.remove_cart', function() {
             var row_id = $(this).attr("id");
             $.ajax({
-                url: "<?= base_url('admin/Penjualan/delete_cart'); ?>",
+                url: "<?= base_url('Penjualan/delete_cart'); ?>",
                 method: "POST",
                 data: {
                     row_id: row_id
@@ -106,202 +104,201 @@
 
 <!-- Grafik Garis Penjualan -->
 <script>
- $(function()
- {
-    Chart.defaults.global.defaultFontFamily = 'Segoe UI'; // Mengatur default seluruh font (style) pada chart
-    Chart.defaults.global.defaultFontSize = 14; // Mengatur default seluruh size font pada chart
+    $(function() {
+        Chart.defaults.global.defaultFontFamily = 'Segoe UI'; // Mengatur default seluruh font (style) pada chart
+        Chart.defaults.global.defaultFontSize = 14; // Mengatur default seluruh size font pada chart
 
- //Get the Line chart canvas
-    var cData = JSON.parse(`<?php echo $chart_data; ?>`); // JSON.parse = fungs i untuk mengurai data menjadi objek JavaScript
-    var ctx = $("#pnjLine"); // Target canvas id dari v_chart.php
+        //Get the Line chart canvas
+        var cData = JSON.parse(`<?php echo $chart_data; ?>`); // JSON.parse = fungs i untuk mengurai data menjadi objek JavaScript
+        var ctx = $("#pnjLine"); // Target canvas id dari v_chart.php
 
- //Line chart data
- var data = {
-     labels: cData.label_bulan,
-     datasets: [{
-         label: 'Buku Terjual',
-         data: cData.data_jml,
+        //Line chart data
+        var data = {
+            labels: cData.label_bulan,
+            datasets: [{
+                label: 'Buku Terjual',
+                data: cData.data_jml,
 
-        lineTension: 0.3, // Mengatur tingkat ketegangan garis, jika di set ke 0 maka garis semakin lurus.
-        borderWidth: 3, // Mengatur lebar garis (pixels)
-        backgroundColor: "rgba(2,117,216,0.2)", // Mengatur warna backgroun d pada isi grafik
-        borderColor: "rgba(2,117,216,1)", // Mengatur warna garis
-        pointStyle: 'circle', // Mengatur style point (triangle, star, cros s, dash, rect, rectRounded, etc)
-        pointRadius: 3, // Mengatur besarnya point pada garis
-        pointBackgroundColor: "rgba(2,117,216,1)", // Mengatur warna point
-        pointBorderColor: "rgba(255,255,255,0.8)", // Mengatur warna border point
-        pointHoverRadius: 5, // Mengatur besarnya point pada garis saat dis entuh pointer mouse
-        pointHoverBackgroundColor: "rgba(2,117,216,1)", // Mengatur warna b ackground point saat disentuh pointer mouse
-        pointHitRadius: 50, // Mengatur radius hit point di garis saat dis entuh pointer mouse
-        pointBorderWidth: 2, // Mengatur besar border untuk point
-    }]
-};
+                lineTension: 0.3, // Mengatur tingkat ketegangan garis, jika di set ke 0 maka garis semakin lurus.
+                borderWidth: 3, // Mengatur lebar garis (pixels)
+                backgroundColor: "rgba(2,117,216,0.2)", // Mengatur warna backgroun d pada isi grafik
+                borderColor: "rgba(2,117,216,1)", // Mengatur warna garis
+                pointStyle: 'circle', // Mengatur style point (triangle, star, cros s, dash, rect, rectRounded, etc)
+                pointRadius: 3, // Mengatur besarnya point pada garis
+                pointBackgroundColor: "rgba(2,117,216,1)", // Mengatur warna point
+                pointBorderColor: "rgba(255,255,255,0.8)", // Mengatur warna border point
+                pointHoverRadius: 5, // Mengatur besarnya point pada garis saat dis entuh pointer mouse
+                pointHoverBackgroundColor: "rgba(2,117,216,1)", // Mengatur warna b ackground point saat disentuh pointer mouse
+                pointHitRadius: 50, // Mengatur radius hit point di garis saat dis entuh pointer mouse
+                pointBorderWidth: 2, // Mengatur besar border untuk point
+            }]
+        };
 
- //options
- var options = {
-     responsive: true,
-     title: {
-         display: true,
-         position: "top",
-         text: "Grafik Penjualan Tahun " + cData.label_tahun,
-         fontSize: 18,
-         fontColor: "#111"
-     },
-     legend: {
-         display: true,
-         position: "right",
-         labels: {
-             fontColor: "#333",
-             fontSize: 16,
+        //options
+        var options = {
+            responsive: true,
+            title: {
+                display: true,
+                position: "top",
+                text: "Grafik Penjualan Tahun " + cData.label_tahun,
+                fontSize: 18,
+                fontColor: "#111"
+            },
+            legend: {
+                display: true,
+                position: "right",
+                labels: {
+                    fontColor: "#333",
+                    fontSize: 16,
 
-         }
-     },
-     scales: {
-         xAxes: [{
-             time: {
-                 unit: 'month',
-             },
-             gridLines: {
-                 display: false
-             },
-             scaleLabel: {
-                 display: true,
-                 fontStyle: 'bold', 
-                 labelString: 'BULAN'
-             }
-         }],
-         yAxes: [{
-             ticks: {
-                 min: 0,
-                 max: 1000,
-                 maxTicksLimit: 15
-             },
-             gridLines: {
-                 color: "rgba(0, 0, 0, .150)",
-             },
-             scaleLabel: {
-                 display: true,
-                 fontStyle: 'bold',
-                 labelString: 'JUMLAH PENJUALAN'
-             }
-         }],
-     },
- };
+                }
+            },
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month',
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        fontStyle: 'bold',
+                        labelString: 'BULAN'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 1000,
+                        maxTicksLimit: 15
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .150)",
+                    },
+                    scaleLabel: {
+                        display: true,
+                        fontStyle: 'bold',
+                        labelString: 'JUMLAH PENJUALAN'
+                    }
+                }],
+            },
+        };
 
- //Create Line Chart class object
- var chart1 = new Chart(ctx, {
- type: "line", // Mengatur tipe chart yang digunakan
- data: data,
- options: options
-});
-});
+        //Create Line Chart class object
+        var chart1 = new Chart(ctx, {
+            type: "line", // Mengatur tipe chart yang digunakan
+            data: data,
+            options: options
+        });
+    });
 </script>
 
 <!-- Grafik Batang Penjualan -->
 <script>
-   $(function() {
-       Chart.defaults.global.defaultFontFamily = 'Segoe UI';
-       Chart.defaults.global.defaultFontSize = 14;
+    $(function() {
+        Chart.defaults.global.defaultFontFamily = 'Segoe UI';
+        Chart.defaults.global.defaultFontSize = 14;
 
- //get the bar chart canvas
- var cData = JSON.parse(`<?php echo $chart_data; ?>`);
- var ctx = $("#pnjBar");
+        //get the bar chart canvas
+        var cData = JSON.parse(`<?php echo $chart_data; ?>`);
+        var ctx = $("#pnjBar");
 
- //bar chart data
- var data = {
-   labels: cData.label_bulan,
-   datasets: [{
-       label: 'Buku Terjual',
-       data: cData.data_jml,
+        //bar chart data
+        var data = {
+            labels: cData.label_bulan,
+            datasets: [{
+                label: 'Buku Terjual',
+                data: cData.data_jml,
                 backgroundColor: [ // Warna background pada batang grafik
-                "#DEB887",
-                "#A9A9A9",
-                "#DC143C",
-                "#F4A460",
-                "#2E8B57",
-                "#1D7A46",
-                "#CDA776",
-                "#CDA776",
-                "#989898",
-                "#CB252B",
-                "#E39371",
+                    "#DEB887",
+                    "#A9A9A9",
+                    "#DC143C",
+                    "#F4A460",
+                    "#2E8B57",
+                    "#1D7A46",
+                    "#CDA776",
+                    "#CDA776",
+                    "#989898",
+                    "#CB252B",
+                    "#E39371",
                 ],
                 borderColor: [ // Warna border pada batang grafik
-                "#CDA776",
-                "#989898",
-                "#CB252B",
-                "#E39371",
-                "#1D7A46",
-                "#F4A460",
-                "#CDA776",
-                "#DEB887",
-                "#A9A9A9",
-                "#DC143C",
-                "#F4A460",
-                "#2E8B57",
+                    "#CDA776",
+                    "#989898",
+                    "#CB252B",
+                    "#E39371",
+                    "#1D7A46",
+                    "#F4A460",
+                    "#CDA776",
+                    "#DEB887",
+                    "#A9A9A9",
+                    "#DC143C",
+                    "#F4A460",
+                    "#2E8B57",
                 ],
                 borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] // Lebar border pada batang grafik
             }]
         };
 
- //options
- var options = {
-    responsive: true,
-    title: {
-        display: true,
-        position: "top",
-        text: "Grafik Penjualan Tahun " + cData.label_tahun,
-        fontSize: 18,
-        fontColor: "#111"
-    },
-    legend: {
-        display: false,
-        position: "right",
-        labels: {
-            fontColor: "#333",
-            fontSize: 16
-        }
-    },
-    scales: {
-        xAxes: [{
-            time: {
-                unit: 'month'
-            },
-            gridLines: {
-                display: false
-            },
-            scaleLabel: {
+        //options
+        var options = {
+            responsive: true,
+            title: {
                 display: true,
-                fontStyle: 'bold',
-                labelString: 'Bulan'
-            }
-        }],
-        yAxes: [{
-            ticks: {
-                min: 0,
-                max: 1200,
-                maxTicksLimit: 10
+                position: "top",
+                text: "Grafik Penjualan Tahun " + cData.label_tahun,
+                fontSize: 18,
+                fontColor: "#111"
             },
-            gridLines: {
-                color: "rgba(0, 0, 0, .150)",
+            legend: {
+                display: false,
+                position: "right",
+                labels: {
+                    fontColor: "#333",
+                    fontSize: 16
+                }
             },
-            scaleLabel: {
-                display: true,
-                fontStyle: 'bold',
-                labelString: 'Jumlah Penjualan'
-            }
-        }],
-    },
-};
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        fontStyle: 'bold',
+                        labelString: 'Bulan'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 1200,
+                        maxTicksLimit: 10
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .150)",
+                    },
+                    scaleLabel: {
+                        display: true,
+                        fontStyle: 'bold',
+                        labelString: 'Jumlah Penjualan'
+                    }
+                }],
+            },
+        };
 
- //Create Bar Chart class object
- var chart1 = new Chart(ctx, {
-    type: "bar",
-    data: data,
-    options: options
-});
+        //Create Bar Chart class object
+        var chart1 = new Chart(ctx, {
+            type: "bar",
+            data: data,
+            options: options
+        });
 
-});
+    });
 </script>
 
 <!-- Download as Image - Line Chart -->
@@ -309,7 +306,7 @@
     function downloadLine() {
         var download = document.getElementById("download");
         var image = document.getElementById("pnjLine").toDataURL("image/jpg")
-        .replace("image/jpg", "image/octet-stream");
+            .replace("image/jpg", "image/octet-stream");
         download.setAttribute("href", image);
     }
 </script>
@@ -319,7 +316,7 @@
     function downloadBar() {
         var download = document.getElementById("download1");
         var image = document.getElementById("pnjBar").toDataURL("image/jpg", 1.0)
-        .replace("image/jpg", "image/octet-stream");
+            .replace("image/jpg", "image/octet-stream");
         download.setAttribute("href", image);
     }
 </script>

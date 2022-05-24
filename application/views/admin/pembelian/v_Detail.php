@@ -43,13 +43,13 @@
                                 </tbody>
                             </table>
                         </div>
-                    </main>
-                    <?php $this->load->view("admin/_partials/footer.php") ?>
-                </div>
-            </div>
+            </main>
+            <?php $this->load->view("admin/_partials/footer.php") ?>
+        </div>
+    </div>
 
-        </body>
-        <?php $this->load->view("admin/_partials/modal.php") ?>
-        <?php $this->load->view("admin/_partials/js.php") ?>
+</body>
+<?php $this->load->view("admin/_partials/modal.php") ?>
+<?php $this->load->view("admin/_partials/js.php") ?>
 
-        </html>
+</html>

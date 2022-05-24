@@ -15,27 +15,27 @@ class Penjualan_model extends CI_Model
         return $query;
     }
 
-    public function masker_getAll2()
-    {
-        $query = $this->db->query("SELECT * FROM masker INNER JOIN masker_maskercat ON masker.masker_id=masker_maskercat.masker_id INNER JOIN masker_category ON masker_maskercat.masker_category_id=masker_category.masker_category_id");
-        return $query;
-    }
+    // public function masker_getAll2()
+    // {
+    //     $query = $this->db->query("SELECT * FROM masker INNER JOIN masker_maskercat ON masker.masker_id=masker_maskercat.masker_id INNER JOIN masker_category ON masker_maskercat.masker_category_id=masker_category.masker_category_id");
+    //     return $query;
+    // }
 
     public function masker_getById($id)
     {
-        $query = $this->db->query("SELECT * FROM masker where masker_id=$id");
+        $query = $this->db->query("SELECT * FROM masker where id_masker=$id");
         return $query;
     }
 
-    public function min_stock($jumlah, $id_masker)
+    public function min_stock($qty, $id_masker)
     {
-        $query = $this->db->query("UPDATE masker SET stok_masker = stok_masker -$jumlah Where id_masker = $id_masker");
+        $query = $this->db->query("UPDATE masker SET stok_masker = stok_masker - $qty Where id_masker = $id_masker");
         return $query;
     }
 
-    public function plus_stock($jumlah, $id_masker)
+    public function plus_stock($qty, $id_masker)
     {
-        $query = $this->db->query("UPDATE masker SET stok_masker = stok_masker + $jumlah Where id_masker = $id_masker");
+        $query = $this->db->query("UPDATE masker SET stok_masker = stok_masker + $qty Where id_masker = $id_masker");
         return $query;
     }
 
@@ -74,7 +74,7 @@ class Penjualan_model extends CI_Model
 
     public function penjualan_getAll()
     {
-        $query = $this->db->query("SELECT penjualan.penjualan_id, penjualan.kode_jual, customer.customer_id, customer.name as customer_name, employee.employee_id, employee.name as employee_name, penjualan.sale_date FROM penjualan LEFT JOIN customer ON penjualan.customer_id=customer.customer_id INNER JOIN employee ON penjualan.employee_id=employee.employee_id");
+        $query = $this->db->query("SELECT penjualan.penjualan_id, penjualan.kode_jual, pelanggan.pelanggan_id, pelanggan.name as pelanggan_name, user.id_user, user.name as user_nama, penjualan.sale_date FROM penjualan LEFT JOIN pelanggan ON penjualan.pelanggan_id=pelanggan.pelanggan_id INNER JOIN user ON penjualan.id_user=user.id_user");
         return $query;
     }
 
@@ -94,7 +94,7 @@ class Penjualan_model extends CI_Model
 
     public function penjualan_getAll2($penjualan_id)
     {
-        $query = $this->db->query("SELECT * FROM d_penjualan INNER JOIN masker ON d_penjualan.masker_id=masker.masker_id where penjualan_id=$penjualan_id");
+        $query = $this->db->query("SELECT * FROM d_penjualan INNER JOIN masker ON d_penjualan.d_penjualan_id=masker.id_masker where penjualan_id=$penjualan_id");
         return $query;
     }
 

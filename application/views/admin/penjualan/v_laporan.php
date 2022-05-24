@@ -15,9 +15,8 @@
 			<main>
 				<div class="container-fluid">
 					<h1 class="mt-4">Daftar Penjualan</h1>
-					<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 					<div class="card-header"><i class="fas fa-table mr-1"></i>
-						<a type="button" href="<?= base_url('admin/Penjualan/pdf'); ?>" class="btn btn-warning"><i class="far fa-file-pdf"></i> Export PDF</a>
+						<a type="button" href="<?= base_url('Penjualan/pdf'); ?>" class="btn btn-warning"><i class="far fa-file-pdf"></i> Export PDF</a>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -36,23 +35,16 @@
 									<?php
 									$x = 1;
 									foreach ($penjualan->result_array() as $i) :
-										$penjualan_id = $i['penjualan_id'];
 										$kode_jual = $i['kode_jual'];
-										$customer_name = $i['customer_name'];
 										$user_name = $i['user_name'];
+										$penjualan_id = $i['penjualan_id'];
+										$pelanggan_name = $i['pelanggan_name'];
 										$sale_date = $i['sale_date'];
 									?>
 										<tr>
 											<td><?php echo $kode_jual; ?></td>
 											<td><?php echo $user_name; ?></td>
-											<?php
-											if ($customer_name == "") {
-												$customer_name = '==Pembeli Bukan Member==';
-											} else {
-												$customer_name;
-											}
-											?>
-											<td><?php echo $customer_name; ?></td>
+											<td><?php echo $pelanggan_name; ?></td>
 											<td><?php echo $sale_date; ?></td>
 											<?php
 											$temp = 0;
@@ -67,7 +59,7 @@
 											?>
 											<td>Rp. <?php echo number_format($temp); ?>,-</td>
 											<td>
-												<a href="<?= base_url('admin/penjualan/detail_penjualan/' . $penjualan_id) ?>" class="btn btn-primary">View</a>
+												<a href="<?= base_url('penjualan/detail_penjualan' . $penjualan_id) ?>" class="btn btn-primary">View</a>
 											</td>
 										</tr>
 									<?php

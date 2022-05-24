@@ -20,7 +20,7 @@ class Penjualan extends CI_Controller
         'level_id' => $this->Level_model->level_getById($id_level)->row(),
         'masker' => $this->Penjualan_model->masker_getAll(),
         'masker1' => $this->Penjualan_model->masker_getAll1(),
-        'masker2' => $this->Penjualan_model->masker_getAll2(),
+        // 'masker2' => $this->Penjualan_model->masker_getAll2(),
         'customer' => $this->Pelanggan_model->pelanggan_getAll(),
       );
       $this->load->view("admin/penjualan/v_penjualan", $data);
@@ -40,14 +40,13 @@ class Penjualan extends CI_Controller
       'name' => $this->input->post('product_name'),
       'price' => $this->input->post('product_price'),
       'qty' => $this->input->post('quantity'),
-      'discount' => $this->input->post('product_discount'),
       'status' => 1
     );
     $insert = $this->cart->insert($data);
-    $masker_id = $this->input->post('product_id');
+    $id_masker = $this->input->post('product_id');
     $qty = $this->input->post('quantity');
     if ($insert == TRUE) {
-      $this->penjualan_model->min_stock($qty, $masker_id);
+      $this->penjualan_model->min_stock($qty, $id_masker);
     } else {
       echo '<script language=JavaScript>alert("Fail add to cart")</script>';
     }
@@ -63,11 +62,10 @@ class Penjualan extends CI_Controller
         $no++;
         $output .= '
         <tr>
-        <td>' . number_format($items['id']) . '</td>
-        <td>' . $items['name'] . '</td>
+        <td>' . number_format($items['id_masker']) . '</td>
+        <td>' . $items['nama_masker'] . '</td>
         <td>' . number_format($items['price']) . '</td>
         <td>' . number_format($items['qty']) . '</td>
-        <td>' . number_format($items['discount']) . '%</td>
         <td>' . number_format($items['subtotal']) . '</td>
         <td><button type="button" id="' . $items['rowid'] . '" class="remove_cart btn btn-danger btn-sm">Cancel</button></td>
         </tr>
@@ -164,7 +162,7 @@ class Penjualan extends CI_Controller
       if ($status == 1) {
         // Input Array
         $data = array(
-          'masker_id' => $masker_id,
+          'id_masker' => $masker_id,
           'amount' => $qty,
           'penjualan_id' => $this->Penjualan_model->penjualan_last_id()->penjualan_id,
           'total_price' => $sub_total
