@@ -66,6 +66,7 @@ class Penjualan extends CI_Controller
         <td>' . $items['nama_masker'] . '</td>
         <td>' . number_format($items['price']) . '</td>
         <td>' . number_format($items['qty']) . '</td>
+        <td>' . number_format($items['subtotal']) . '</td>
         <td><button type="button" id="' . $items['rowid'] . '" class="remove_cart btn btn-danger btn-sm">Cancel</button></td>
         </tr>
         ';
