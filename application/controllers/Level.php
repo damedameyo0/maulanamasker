@@ -1,9 +1,9 @@
-<?php defined ('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 class Level extends CI_Controller
 {
 	public function __construct()
 	{
-		parent ::__construct();
+		parent::__construct();
 
 		$this->load->model('Level_model');
 	}
@@ -17,12 +17,12 @@ class Level extends CI_Controller
 	public function add()
 	{
 		$name = strip_tags($this->input->post('i_name'));
-        //Input array
+		//Input array
 		//test//
 		$data = array(
 			'name' => $name,
 		);
-        //Insert ke database
+		//Insert ke database
 		$x = $this->Level_model->level_cek($name);
 		if ($x == null) {
 			$this->Level_model->level_insert('level', $data);
@@ -32,19 +32,17 @@ class Level extends CI_Controller
 			echo '<script language=JavaScript>alert("Gagal!! Level telah tersimpan sebelumnya")
 			onclick = history.go(-1)</script>';
 		}
-
-		echo 'babi anjing';
-	}   
+	}
 
 	public function edit($id)
 	{
 		$data['level'] = $this->Level_model->level_getById($id);
 		$name = strip_tags($this->input->post('i_name'));
-        //input array
+		//input array
 		$data = array(
-			'name' =>$name
+			'name' => $name
 		);
-        //insert ke database
+		//insert ke database
 		$x = $this->Level_model->level_cek($name);
 		if ($x == null) {
 			$this->Level_model->level_update($id, 'level', $data);
@@ -58,7 +56,7 @@ class Level extends CI_Controller
 
 	public function delete($id)
 	{
-		$this->Level_model->level_delete('level', $id );
+		$this->Level_model->level_delete('level', $id);
 		echo '<script language=JavaScript>alert("Delete Berhasil")
 		onclick = history.go(-1)</script>';
 	}
