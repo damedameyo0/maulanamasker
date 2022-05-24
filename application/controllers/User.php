@@ -31,7 +31,6 @@ class User extends CI_Controller
         $password  = $this->input->post('password');
 
         $user = $this->db->get_where('user', ['email' => $email])->row();
-        $level = $this->db->get_where('level', ['level_id' => $user->level_id])->row();
         if ($user) {
             if (password_verify($password, $user->password)) {
                 $data = [
@@ -39,7 +38,7 @@ class User extends CI_Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'password' => $user->password,
-                    'level_id' => $level->name
+                    'level_id' => $user->level_id
                 ];
                 $this->session->set_userdata($data);
                 redirect('Overview');
