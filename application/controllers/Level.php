@@ -18,6 +18,7 @@ class Level extends CI_Controller
 	{
 		$name = strip_tags($this->input->post('i_name'));
         //Input array
+		//test//
 		$data = array(
 			'name' => $name,
 		);
