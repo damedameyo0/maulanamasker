@@ -37,7 +37,7 @@
                                             <div class="row">
                                                 <label for="title" class="col-sm-5 control-label"> Nama User</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" data-user="user" value="<?= $this->session->userdata('name'); ?>" readonly>
+                                                    <input type="text" class="form-control" data-user="user" value="<?= $this->session->userdata('name') ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +49,7 @@
                                             <div class="row">
                                                 <label for="title" class="col-sm-4 control-label">Level</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" data-user="user" value="<?= $this->session->userdata('level_id'); ?>" readonly>
+                                                    <input type="text" class="form-control" data-user="user" value="<?= $level_id->name; ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>

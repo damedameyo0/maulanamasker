@@ -174,7 +174,7 @@ class Pembelian extends CI_Controller
 
     public function list_pembelian()
     {
-        if ($this->session->userdata('employee_id') != Null) {
+        if ($this->session->userdata('id_user') != Null) {
             $id = $this->session->userdata('level_id');
             $data = array(
                 'user_level' => $this->Level_model->level_getById($id)->row(),
