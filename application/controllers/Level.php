@@ -32,6 +32,8 @@ class Level extends CI_Controller
 			echo '<script language=JavaScript>alert("Gagal!! Level telah tersimpan sebelumnya")
 			onclick = history.go(-1)</script>';
 		}
+
+		echo 'babi anjing';
 	}   
 
 	public function edit($id)
@@ -61,4 +63,3 @@ class Level extends CI_Controller
 		onclick = history.go(-1)</script>';
 	}
 }
-?>
