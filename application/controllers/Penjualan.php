@@ -241,7 +241,7 @@ class Penjualan extends CI_Controller
       echo '<script language=JavaScript>alert("Anda Tidak memiliki akses")
             onclick=location.href="Overview"</script>';
     } else {
-      echo '<script language=JavaScript>alert("Anda Belum Login, Silahkan Login")
+      echo '<script language=JavaScript>alert("Anda Belum Login maszeh, Silahkan Login")
             onclick=location.href="user"</script>';
     }
   }
