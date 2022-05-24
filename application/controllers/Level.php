@@ -1,6 +1,8 @@
+
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 class Level extends CI_Controller
 {
+	//BANGSAT KAU//
 	public function __construct()
 	{
 		parent::__construct();
